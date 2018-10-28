@@ -1,6 +1,5 @@
 </div>
-<!-- jQuery 3 -->
-<script src="<?= base_url('assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/bower_components/jquery/jquery.js'); ?>"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= base_url('assets/bower_components/jquery-ui/jquery-ui.min.js'); ?>"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -11,7 +10,7 @@
 <script src="<?= base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
 <!-- Morris.js charts -->
 <script src="<?= base_url('assets/bower_components/raphael/raphael.min.js'); ?>"></script>
-<script src="<?= base_url('assets/bower_components/morris.js/morris.min.js'); ?>"></script>
+<script src="<?= base_url('assets/bower_components/morris.js/morris.js'); ?>"></script>
 <!-- Sparkline -->
 <script src="<?= base_url('assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js'); ?>"></script>
 <!-- jvectormap -->
@@ -36,5 +35,12 @@
 <script src="<?= base_url('assets/js/pages/dashboard.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/js/demo.js'); ?>"></script>
+<script src="<?= base_url('assets/bower_components/datatables.net/js/jquery.dataTables.js'); ?>"></script>
+<script>
+    $(document).ready(function(){
+        $('#tabel-data').DataTable();
+    });
+</script>
+
 </body>
 </html>
