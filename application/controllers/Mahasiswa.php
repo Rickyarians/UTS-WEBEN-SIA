@@ -26,7 +26,77 @@ class Mahasiswa extends MY_Controller {
 	public function index()
 	{
 	    $this->load->model('Mahasiswa_Model');
-        $data['kodeunik'] = $this->Mahasiswa_Model->buat_kode(); // variable $kodeunik merujuk ke file model_user.php pada function buat_kode. paham kan ya? harus paham dong
-		$this->load->view('mahasiswa', $data);
+
+	    $this->data->hasil = $this->Mahasiswa_Model->getMahasiswa('mahasiswa');
+		$this->load->view('mahasiswa', $this->data);
 	}
+
+    public function edit_data($id){
+        $this->load->model('Mahasiswa_Model');
+        $mhs = $this->Mahasiswa_Model->GetWhere('mahasiswa', array('Nim' => $id));
+        $data = array(
+            'Nim' => $mhs[0]['Nim'],
+            'Nama_Mhs' => $mhs[0]['Nama_Mhs'],
+            'Tgl_Lahir' => $mhs[0]['Tgl_Lahir'],
+            'Alamat' => $mhs[0]['Alamat'],
+            'Jenis_Kelamin' => $mhs[0]['Jenis_Kelamin']
+        );
+        $this->load->view('EditMahasiswa', $data);
+    }
+
+    public function update_data(){
+        $kode = $this->input->post('kode_mhs');
+        $nama = $this->input->post('nama_mhs');
+        $tanggal = $this->input->post('tgl_mhs');
+        $alamat = $this->input->post('alamat_mhs');
+        $jk = $this->input->post('jk');
+
+        $datauser = array(
+            'Nim' => $kode,
+            'Nama_mhs' => $nama,
+            'Tgl_Lahir' => $tanggal,
+            'Alamat' => $alamat,
+            'Jenis_Kelamin' => $jk
+        );
+        $where = array(
+            'Nim' => $kode
+        );
+        $this->load->model('Mahasiswa_Model');
+        $res = $this->Mahasiswa_Model->update('mahasiswa', $datauser, $where);
+        if ($res>0) {
+            redirect('/');
+        }
+    }
+
+
+	public function tambah() {
+
+	    $kode = $this->input->post('kode_mhs');
+	    $nama = $this->input->post('nama_mhs');
+	    $tanggal = $this->input->post('tgl_mhs');
+	    $alamat = $this->input->post('alamat_mhs');
+	    $jk = $this->input->post('jk');
+
+	    $datauser = array(
+	        'Nim' => $kode,
+            'Nama_mhs' => $nama,
+            'Tgl_Lahir' => $tanggal,
+            'Alamat' => $alamat,
+            'Jenis_Kelamin' => $jk
+        );
+
+	    $this->load->model('Mahasiswa_Model');
+	    $this->Mahasiswa_Model->insert('mahasiswa', $datauser);
+        redirect('mahasiswa');
+    }
+
+    public function hapus($id){
+
+        $this->load->model('Mahasiswa_Model');
+        $id = array('Nim' => $id);
+        $this->Mahasiswa_Model->Delete('mahasiswa', $id);
+        redirect('mahasiswa');
+
+
+    }
 }

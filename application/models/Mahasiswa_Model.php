@@ -3,27 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mahasiswa_Model extends CI_Model{
 
-    var $db;
-    var $table = "mahasiswa";
 
-    public function buat_kode()   {
-        $this->db->select('RIGHT(mahasiswa.Nim,1) as kode', FALSE);
-        $this->db->order_by('Nim','DESC');
-        $this->db->limit(1);
-        $query = $this->db->get('mahasiswa');      //cek dulu apakah ada sudah ada kode di tabel.
-        if($query->num_rows() <> 0){
-            //jika kode ternyata sudah ada.
-            $data = $query->row();
-            $kode = intval($data->kode) + 1;
-        }
-        else {
-            //jika kode belum ada
-            $kode = 1;
-        }
-        $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
-        $kodejadi = "MHS-9921-".$kodemax;    // hasilnya ODJ-9921-0001 dst.
-        return $kodejadi;
-    }
+
 
 
 
@@ -34,10 +15,9 @@ class Mahasiswa_Model extends CI_Model{
         return $hasil->result_array();
         }
 
-        public function getDetail($id){
-            $query = $this->db->select('*')->from('mahasiswa')->where('Nim',$id)->get();
-            return $query->result();
-
+        public function GetWhere($table, $data){
+        $hasil =$this->db->get_where($table, $data);
+        return $hasil ->result_array();
         }
 
 
@@ -50,9 +30,9 @@ class Mahasiswa_Model extends CI_Model{
         }
 
 
-        public function update($table, $data, $where)
+        public function update($table, $datauser, $where)
         {
-            $update = $this->db->update($table, $data, $where);
+            $update = $this->db->update($table, $datauser, $where);
 
             return $update;
         }

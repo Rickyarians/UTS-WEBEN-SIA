@@ -26,9 +26,9 @@ include('Layout/Menu.php');
         <br>
         <!-- Button trigger modal -->
         <div class="container">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+            <a  href="<?= site_url('tambahmahasiswa'); ?>" class="btn btn-success">
                 <i class="fa fa-plus mr-2"></i>  Tambah
-            </button>
+            </a>
         </div>
 
         <br>
@@ -38,6 +38,7 @@ include('Layout/Menu.php');
             <table id="tabel-data" class="table table-striped table-bordered container" width="100%" cellspacing="0">
                 <thead>
                 <tr>
+                    <th>No</th>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
                     <th>Tanggal Lahir</th>
@@ -48,27 +49,33 @@ include('Layout/Menu.php');
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
+                    <th>No</th>
+                    <th>NIM</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
                 <tbody>
+                <?php $urut=1; foreach( $hasil as $mhs) : ?>
+
                 <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
+                    <td><?= $urut; ?></td>
+                    <td><?= $mhs['Nim']; ?></td>
+                    <td><?= $mhs['Nama_Mhs'];?></td>
+                    <td><?= $mhs['Tgl_Lahir']; ?></td>
+                    <td><?= $mhs['Alamat']; ?></td>
+                    <td><?= $mhs['Jenis_Kelamin']; ?></td>
                     <td>
-                        <a class="btn btn-warning"> Edit</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <a class="btn btn-warning" href="<?= site_url('mahasiswa/edit_data/'.$mhs['Nim']) ?>"> Edit</a>
+                        <a class="btn btn-danger" href="<?= site_url('mahasiswa/hapus/'.$mhs['Nim']) ?>">Delete</a>
                     </td>
 
                 </tr>
+
+                <?php $urut++; endforeach; ?>
 
 
 
@@ -97,28 +104,6 @@ include('Layout/Menu.php');
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Tambah Mahasiswa</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post">
-                        <input type="text" name='id_odojers' class="form-control" value="<?= $kodeunik; ?>" readonly>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <!-- ./wrapper -->
 
