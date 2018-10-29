@@ -24,7 +24,8 @@ include('Layout/Menu.php');
         <div class="container-fluid card">
             <form action="<?= site_url('mahasiswa/update_data'); ?>" method="post">
                 <label for="">Kode Mahasiswa</label>
-                <input type="text" name='kode_mhs' class="form-control" value="<?= $Nim; ?>" disabled>
+                <input type="text" name='' class="form-control" value="<?= $Nim; ?>" disabled>
+                <input type="hidden" name='kode_mhs' class="form-control" value="<?= $Nim; ?>">
                 <label for="">Nama Mahasiswa</label>
                 <input type="text" name="nama_mhs" class="form-control" value="<?= $Nama_Mhs; ?>" required>
                 <label for="">Tanggal Lahir</label>

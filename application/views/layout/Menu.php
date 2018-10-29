@@ -52,13 +52,13 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
-                    <li><a href="index2.html"><i class="fa fa-file"></i>Master Matakuliah</a></li>
-                    <li><a href="index2.html"><i class="fa fa-user-secret"></i>Master Dosen</a></li>
-                    <li><a href="index2.html"><i class="fa fa-building"></i>Master Ruang</a></li>
+                    <li class="active"><a href="<?= site_url('mahasiswa'); ?>"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
+                    <li><a href="<?= site_url('matakuliah'); ?>"><i class="fa fa-file"></i>Master Matakuliah</a></li>
+                    <li><a href="<?= site_url('dosen'); ?>"> <i class="fa fa-user-secret"></i>Master Dosen</a></li>
+
                 </ul>
             </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Jadwal Kuliah</span></a></li>
+            <li><a href="<?= site_url('jadwal') ?>"><i class="fa fa-book"></i> <span>Jadwal Kuliah</span></a></li>
 
 
 

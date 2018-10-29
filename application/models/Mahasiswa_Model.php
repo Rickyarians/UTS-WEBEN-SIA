@@ -29,18 +29,24 @@ class Mahasiswa_Model extends CI_Model{
             return $insert;
         }
 
-
-        public function update($table, $datauser, $where)
-        {
-            $update = $this->db->update($table, $datauser, $where);
-
-            return $update;
+        public function update($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
         }
+
+
 
         public function delete($table, $where)
         {
             $delete = $this->db->delete($table, $where);
             return $delete;
+        }
+
+        public function cek_id($field, $data){
+            $this->db->where($field, $data);
+            $this->db->from('mahasiswa');
+            $query = $this->db->get();
+            return $query->num_rows();
         }
 
 }

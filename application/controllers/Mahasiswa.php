@@ -62,10 +62,11 @@ class Mahasiswa extends MY_Controller {
             'Nim' => $kode
         );
         $this->load->model('Mahasiswa_Model');
-        $res = $this->Mahasiswa_Model->update('mahasiswa', $datauser, $where);
-        if ($res>0) {
-            redirect('/');
+        $res = $this->Mahasiswa_Model->update($where, $datauser, 'mahasiswa');
+        if ($res > 0) {
+
         }
+        redirect('mahasiswa');
     }
 
 
@@ -77,17 +78,25 @@ class Mahasiswa extends MY_Controller {
 	    $alamat = $this->input->post('alamat_mhs');
 	    $jk = $this->input->post('jk');
 
-	    $datauser = array(
-	        'Nim' => $kode,
-            'Nama_mhs' => $nama,
-            'Tgl_Lahir' => $tanggal,
-            'Alamat' => $alamat,
-            'Jenis_Kelamin' => $jk
-        );
-
 	    $this->load->model('Mahasiswa_Model');
-	    $this->Mahasiswa_Model->insert('mahasiswa', $datauser);
-        redirect('mahasiswa');
+	    $cek = $this->Mahasiswa_Model->cek_id('Nim', $kode);
+
+	    if ( $cek > 0 ) {
+	        redirect('mahasiswa');
+        } else {
+            $datauser = array(
+                'Nim' => $kode,
+                'Nama_mhs' => $nama,
+                'Tgl_Lahir' => $tanggal,
+                'Alamat' => $alamat,
+                'Jenis_Kelamin' => $jk
+            );
+
+            $this->load->model('Mahasiswa_Model');
+            $this->Mahasiswa_Model->insert('mahasiswa', $datauser);
+            redirect('mahasiswa');
+        }
+
     }
 
     public function hapus($id){
