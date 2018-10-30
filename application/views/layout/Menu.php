@@ -4,7 +4,7 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>U</b>TS</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>SIA</b>WEBEN</span>
     </a>
@@ -29,17 +29,9 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="assets/img/tomdelonge.png" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p>Ricky Ariansyah</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
+
         <!-- search form -->
-        <br>
+
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu mt-3" data-widget="tree">
@@ -59,7 +51,8 @@
                 </ul>
             </li>
             <li><a href="<?= site_url('jadwal') ?>"><i class="fa fa-book"></i> <span>Jadwal Kuliah</span></a></li>
-
+            <li class="header">Ricky Ariansyah - 41815110134</li>
+            <li class="header">Asep Moh Ridwan - 41815120007</li>
 
 
 
