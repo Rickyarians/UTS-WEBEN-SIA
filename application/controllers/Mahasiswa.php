@@ -30,6 +30,10 @@ class Mahasiswa extends MY_Controller {
 	    $this->data->hasil = $this->Mahasiswa_Model->getMahasiswa('mahasiswa');
 		$this->load->view('mahasiswa', $this->data);
 	}
+    public function tambahmahasiswa()
+    {
+        $this->load->view('tambahmahasiswa');
+    }
 
     public function edit_data($id){
         $this->load->model('Mahasiswa_Model');

@@ -26,7 +26,7 @@ include('Layout/Menu.php');
         <br>
         <!-- Button trigger modal -->
         <div class="container">
-            <a  href="<?= site_url('tambahmahasiswa'); ?>" class="btn btn-success">
+            <a  href="<?= site_url('mahasiswa/tambahmahasiswa'); ?>" class="btn btn-success">
                 <i class="fa fa-plus mr-2"></i>  Tambah
             </a>
         </div>

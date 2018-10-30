@@ -36,7 +36,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu mt-3" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Master Data</span>
                     <span class="pull-right-container">
@@ -44,13 +44,13 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="<?= site_url('mahasiswa'); ?>"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
+                    <li><a href="<?= site_url('mahasiswa'); ?>"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
                     <li><a href="<?= site_url('matakuliah'); ?>"><i class="fa fa-file"></i>Master Matakuliah</a></li>
                     <li><a href="<?= site_url('dosen'); ?>"> <i class="fa fa-user-secret"></i>Master Dosen</a></li>
 
                 </ul>
             </li>
-            <li><a href="<?= site_url('perkuliahan') ?>"><i class="fa fa-book"></i> <span>Jadwal Kuliah</span></a></li>
+            <li class="active"><a href="<?= site_url('perkuliahan') ?>"><i class="fa fa-book"></i> <span>Jadwal Kuliah</span></a></li>
             <li class="header">Ricky Ariansyah - 41815110134</li>
             <li class="header">Asep Moh Ridwan - 41815120007</li>
 

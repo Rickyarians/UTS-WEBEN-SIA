@@ -1,6 +1,6 @@
 <?php
 include('Layout/Header.php');
-include('Layout/Menu.php');
+include('Layout/Menudosen.php');
 ?>
 
 

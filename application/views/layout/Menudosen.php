@@ -44,9 +44,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="<?= site_url('mahasiswa'); ?>"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
-                    <li><a href="<?= site_url('matakuliah'); ?>"><i class="fa fa-file"></i>Master Matakuliah</a></li>
-                    <li><a href="<?= site_url('dosen'); ?>"> <i class="fa fa-user-secret"></i>Master Dosen</a></li>
+                    <li ><a href="<?= site_url('mahasiswa'); ?>"><i class="fa fa-user"></i>Master Mahasiswa</a></li>
+                    <li ><a href="<?= site_url('matakuliah'); ?>"><i class="fa fa-file"></i>Master Matakuliah</a></li>
+                    <li class="active"><a href="<?= site_url('dosen'); ?>"> <i class="fa fa-user-secret"></i>Master Dosen</a></li>
 
                 </ul>
             </li>

@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Perkuliahan
-
-    extends MY_Controller {
+class Perkuliahan extends MY_Controller {
 
     function __construct()
     {
@@ -26,82 +24,70 @@ class Perkuliahan
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-    public function tambahdosen()
+    public function tambahjadwalkuliah()
     {
         $this->load->view('tambahdosen');
     }
 	public function index()
 	{
-	    $this->load->model('Dosen_Model');
+	    $this->load->model('Mahasiswa_Model');
 
-	    $this->data->hasilds = $this->Dosen_Model->getDosen('dosen');
-		$this->load->view('dosen', $this->data);
+	    $this->data->hasilds = $this->Mahasiswa_Model->getMahasiswa('mahasiswa');
+		$this->load->view('perkuliahan', $this->data);
 	}
 
     public function edit_data($id){
-        $this->load->model('Dosen_Model');
-        $mhs = $this->Dosen_Model->GetWhere('dosen', array('Nip' => $id));
-        $data = array(
-            'Nip' => $mhs[0]['Nip'],
-            'Nama_Dosen' => $mhs[0]['Nama_Dosen']
+        $this->load->model('Mahasiswa_Model');
+        $this->data->datamhs = $this->Mahasiswa_Model->GetWhere('mahasiswa', array('Nim' => $id));
+//        $datauser = array(
+//            'Nim' => $mhs[0]['Nim'],
+//            'Nama_Mhs' => $mhs[0]['Nama_Mhs'],
+//            'Tgl_Lahir' => $mhs[0]['Tgl_Lahir'],
+//            'Alamat' => $mhs[0]['Alamat'],
+//            'Jenis_Kelamin' => $mhs[0]['Jenis_Kelamin']
+//        );
+
+//        $this->data->datamhs = $datauser;
+        //get semua MK
+
+       $this->data->datamk = $this->Mahasiswa_Model->getAllMK();
+       $this->data->datadosen = $this->Mahasiswa_Model->getAlldosen();
+       $this->data->datajadwal = $this->Mahasiswa_Model->getJadwal($id);
+
+        $this->load->view('Editperkuliahan', $this->data);
+    }
+
+    public function tambah()
+    {
+        $kode = $this->input->post('kode_mhs');
+        $pilihmk = $this->input->post('pilmk');
+        $pilihhari = $this->input->post('hari');
+        $pilihdosen = $this->input->post('dosen');
+        $pilihruangan = $this->input->post('ruangan');
+
+
+        $datajadwal = array(
+            'NIM' => $kode,
+            'Matkuliah' => $pilihmk,
+            'Hari' => $pilihhari,
+            'Dosen' => $pilihdosen,
+            'Ruangan' => $pilihruangan
         );
-        $this->load->view('EditMahasiswa', $data);
-    }
 
-    public function update_data(){
-        $kode = $this->input->post('kode_nip');
-        $nama = $this->input->post('nama_dosen');
-
-
-        $datauser = array(
-            'Nip' => $kode,
-            'Nama_Dosen' => $nama
-        );
-        $where = array(
-            'Nip' => $kode
-        );
-        $this->load->model('Dosen_Modal');
-        $res = $this->Dosen_Model->update($where, $datauser, 'dosen');
-        if ($res > 0) {
-
-        }
-        redirect('dosen');
-    }
-
-
-	public function tambah() {
-
-        $kode = $this->input->post('kode_nip');
-        $nama = $this->input->post('nama_dosen');
-
-
-	    $this->load->model('Dosen_Model');
-	    $cek = $this->Dosen_Model->cek_id('Nip', $kode);
-
-	    if ( $cek > 0 ) {
-	        redirect('dosen');
-        } else {
-            $datauser = array(
-                'Nip' => $kode,
-                'Nama_Dosen' => $nama
-            );
-
-            $this->load->model('Dosen_Model');
-            $this->Dosen_Model->insert('dosen', $datauser);
-            redirect('dosen');
-        }
+        $this->load->model('Mahasiswa_Model');
+        $this->Mahasiswa_Model->insert('jadwal', $datajadwal);
+        redirect('perkuliahan');
 
     }
 
-    public function hapus($id){
+    public function hapusjadwal($id){
 
-        $this->load->model('Dosen_Model');
-        $id = array('Nip' => $id);
-        $this->Dosen_Model->Delete('dosen', $id);
-        redirect('dosen');
+        $this->load->model('Mahasiswa_Model');
+        $idun = array('Id_perkuliahan'=> $id);
+        $this->Mahasiswa_Model->Delete('jadwal', $idun);
+        redirect('perkuliahan');
 
 
     }
-
 
 }

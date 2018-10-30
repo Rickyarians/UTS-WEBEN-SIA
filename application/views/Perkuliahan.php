@@ -1,6 +1,6 @@
 <?php
 include('Layout/Header.php');
-include('Layout/Menumk.php');
+include('Layout/MenuJadwal.php');
 ?>
 
 
@@ -15,8 +15,8 @@ include('Layout/Menumk.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Matakuliah
-                <small>Tabel</small>
+                Perkuliahan
+                <small>Mahasiswa</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,11 +25,7 @@ include('Layout/Menumk.php');
         </section>
         <br>
         <!-- Button trigger modal -->
-        <div class="container">
-            <a  href="<?= site_url('matakuliah/tambahmatakuliah'); ?>" class="btn btn-success">
-                <i class="fa fa-plus mr-2"></i>  Tambah
-            </a>
-        </div>
+
 
         <br>
         <!-- /.content -->
@@ -39,32 +35,38 @@ include('Layout/Menumk.php');
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode Mata Kuliah</th>
-                    <th>Nama Mata Kuliah</th>
-                    <th>SKS</th>
+                    <th>NIM</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kode Mata Kuliah</th>
-                    <th>Nama Mata Kuliah</th>
-                    <th>SKS</th>
+                    <th>NIM</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                <?php $urut=1; foreach( $hasilmk as $mk) : ?>
+                <?php $urut=1; foreach( $hasilds as $mhs) : ?>
 
                 <tr>
                     <td><?= $urut; ?></td>
-                    <td><?= $mk['Kode_MK']; ?></td>
-                    <td><?= $mk['Nama_MK'];?></td>
-                    <td><?= $mk['Sks']; ?></td>
+                    <td><?= $mhs['Nim']; ?></td>
+                    <td><?= $mhs['Nama_Mhs'];?></td>
+                    <td><?= $mhs['Tgl_Lahir']; ?></td>
+                    <td><?= $mhs['Alamat']; ?></td>
+                    <td><?= $mhs['Jenis_Kelamin']; ?></td>
                     <td>
-                        <a class="btn btn-warning" href="<?= site_url('matakuliah/edit_data/'.$mk['Kode_MK']) ?>"> Edit</a>
-                        <a class="btn btn-danger" href="<?= site_url('matakuliah/hapus/'.$mk['Kode_MK']) ?>">Delete</a>
+                        <a class="btn btn-info" href="<?= site_url('perkuliahan/edit_data/'.$mhs['Nim']) ?>"> Lihat Jadwal</a>
+
                     </td>
 
                 </tr>
